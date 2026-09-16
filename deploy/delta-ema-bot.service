@@ -1,0 +1,16 @@
+[Unit]
+Description=Delta Exchange 20-EMA retest bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=deltabot
+WorkingDirectory=/opt/delta-ema-bot
+EnvironmentFile=/opt/delta-ema-bot/.env
+ExecStart=/opt/delta-ema-bot/.venv/bin/python /opt/delta-ema-bot/bot.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
